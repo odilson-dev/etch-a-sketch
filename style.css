@@ -1,9 +1,8 @@
 .container{
-    display: grid;
-    grid-template-columns: repeat(16, 0fr);  
     width: 100%;
     margin: 0 auto;
     border: 1px solid #ccc;
+    grid-gap: 10px;
 }
 
 .square-item{
@@ -16,4 +15,15 @@
 }
 .square-item:hover{
     background-color: aquamarine;
+}
+
+/* BUTTON */
+
+button{
+    display: block;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    padding: 15px;
+    margin: 20px auto 40px auto;
 }
