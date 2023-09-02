@@ -7,18 +7,12 @@ container.style.display = "grid";
 
 let button = document.querySelector("button");
 
-button.addEventListener("click", () =>{
-    let useAnswer = parseInt(prompt("What is the number of squares per side for the new grid?"));
 
-    if(useAnswer > 100){
-        alert("Warning! The maximum number of squares allowed is 100.");
-    } else{
-    container.innerHTML = '';
-    let squareWidth = CONTAINER_WIDTH / useAnswer;
+function createSquares(squareNumber){
 
-
-    container.style.gridTemplateColumns = `repeat(${useAnswer}, 1fr)`;
-    for(let i = 1; i <= (useAnswer**2); i++){
+    let squareWidth = CONTAINER_WIDTH / squareNumber;
+    container.style.gridTemplateColumns = `repeat(${squareNumber}, 1fr)`;
+    for(let i = 1; i <= (squareNumber**2); i++){
         const squareItem = document.createElement("div");
         squareItem.style.width = `${squareWidth}px`;
         squareItem.style.height = `${squareWidth}px`;
@@ -35,20 +29,21 @@ button.addEventListener("click", () =>{
 
  
 }
+
+
+
+button.addEventListener("click", () =>{
+    let userAnswer = parseInt(prompt("What is the number of squares per side for the new grid?"));
+
+    if(userAnswer > 100){
+        alert("Warning! The maximum number of squares allowed is 100.");
+    } else{
+    container.innerHTML = '';
+    createSquares(userAnswer);
+
+
+    
+}
 });
 
-container.style.gridTemplateColumns = `repeat(5, 1fr)`;
-for(let i = 1; i <= 25; i++){
-    const squareItem = document.createElement("div");
-    squareItem.style.width = `${squareWidth}px`
-    squareItem.style.height = `${squareWidth}px`
-    squareItem.classList.add("square-item");
-    squareItem.addEventListener("mouseover", (e) => {
-        if(e.buttons == 1 || e.buttons == 3){
-            squareItem.style.backgroundColor = "yellow";
-        }
-        
-    })
-    
-    container.appendChild(squareItem);
-}
+createSquares(16);
