@@ -6,6 +6,9 @@ let button = document.querySelector("button");
 button.addEventListener("click", () =>{
     let useAnswer = parseInt(prompt("What is the number of squares per side for the new grid?"));
 
+    if (useAnswer > 100){
+        alert("Warning! The maximum number of squares allowed is 100.")
+    } else{
     container.innerHTML = '';
     
     container.style.gridTemplateColumns = `repeat(${useAnswer}, 1fr)`;
@@ -15,6 +18,7 @@ button.addEventListener("click", () =>{
         squareItem.textContent = i;
         container.appendChild(squareItem);
     }
+}
 });
 
 container.style.gridTemplateColumns = `repeat(16, 1fr)`;
